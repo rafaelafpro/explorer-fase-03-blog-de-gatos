@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+:root{
+    font-size: 62.5%;
+
+    --var-color-white: #fff;
+    --var-color-white-20: rgba(255, 255, 255, 0.20);
+    --var-color-blue-500: #065E7C;
+    --var-color-blue-700: #202024;
+    --var-color-blue-900: #121214;
+}
+
+body{
+    font-size: 1.6rem;
+}
+
+body, input{
+    font-family: 'Mulish', sans-serif;
+}
+
+#app{
+    display: grid;
+    grid-template:
+    "header" max-content
+    "main" max-content
+    "nav" max-content
+    "footer" max-content
+    / 1fr;
+}
+
+h1{
+    color: var(--var-color-blue-700);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 3.8rem;
+}
+
+p{
+    color: var(--var-color-blue-900);
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.6rem;
+}
+
+header {
+    grid-area: header;
+    background-color: var(--var-color-blue-500);
+}
+
+header .container{
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+header .container{
+    /* width: min(40.2rem, 100%); */
+    padding: 1.6rem 2.6rem;
+    margin: 0 auto;
+}
+
+
+
+header .logo, header .avatar{
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 100%;
+}
+
+header .logo{
+    padding: .9rem;
+    background-color: var(--var-color-white);
+}
+
+header form{
+    flex: 1;
+}
+
+header form input{
+    width: 100%;
+    padding: 12px 16px 12px 14px;
+    background-color: var(--var-color-white-20);
+    color: var(--var-color-white);
+    border: 0;
+    border-radius: .4rem;
+}
+
+header form input::placeholder{
+    color: var(--var-color-white);
+}
+
+header form label{
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+main {
+    grid-area: main;
+}
+
+main img, nav img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+}
+
+main .post-content, nav .container{
+    /* width: min(40.2rem, 100%); */
+    padding: 1.6rem 2.6rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+main .post-heading{
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+main h1{
+    flex: 1;
+}
+
+main .post-heading{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+main .rate-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+main .rate-wrapper img{
+    width: 4rem;
+    height: 4rem;
+    padding: 1.2rem;
+    border-radius: 100%;
+    background-color: var(--var-color-blue-500);
+}
+
+nav {
+    grid-area: nav;
+}
+
+nav figure{
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    gap: 1.6rem;
+}
+
+nav .card-content{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    justify-content: center;
+}
+
+nav img{
+    border-radius: .4rem;
+    width: 100%;
+    height: 100%;
+}
+
+nav h4{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+nav p{
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.2rem;
+}
+
+ 
+
+footer {
+    grid-area: footer;
+    background-color: var(--var-color-blue-500);
+
+    margin-top: 3.2rem;
+}
+
+footer .container{
+    padding: 1.6rem;
+    text-align: center;
+    color: var(--var-color-white);
+}
+
+
+
+@media(min-width: 1020px){
+    #app{
+        grid-template:
+        "header" max-content
+        "blog" max-content
+        "footer" max-content
+        / 1fr; 
+        overflow: hidden;
+    }
+
+    header .container, footer .container, .blog{
+        width: min(120rem, 100%) !important;
+        padding: 1.6rem 2.6rem;
+        margin: 0 auto;
+    }
+
+    header{
+        animation: appearFromTop backwards .3s ease-out;
+    }
+
+    header .container{
+        justify-content: space-around;
+    }
+
+    main{
+        grid-area: unset;
+    }
+
+    nav{
+        grid-area: unset;
+    }
+
+    .blog{
+        grid-area: blog;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3.4rem;
+        padding: 3.2rem 2.6rem
+    }
+
+    .thumbnail{
+        border-radius: .4rem;
+        aspect-ratio: 16/9;
+    }
+
+    .blog .post-content{
+        padding-inline: 0;
+    }
+
+    .blog .post-heading{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .blog .rate-wrapper{
+        align-items: center;
+    }
+
+    .rate-wrapper:hover{
+        animation: grow;
+    }
+
+    nav .container{
+        padding: 0;
+    }
+
+    nav h1{
+        margin-top: -0.8rem;
+        font-size: 2.4rem;
+    }
+
+    nav img{
+        width: 100%;
+        height: auto;
+    }
+
+    nav h4{
+        margin-top: -0.8rem;
+        font-size: 1.8rem;
+    }
+
+    nav p{
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+    }
+
+    nav figure{
+        grid-template-columns: 1fr 2fr;
+    }
+
+    nav .card-content{
+        gap: .6rem;
+    }
+
+}
+
+@keyframes appearFromTop{
+    0%{
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes grow{
+    100%{
+        transform: scale(2);
+    }
+}
